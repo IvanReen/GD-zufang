@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/GD-zufang.iml" filepath="$PROJECT_DIR$/.idea/GD-zufang.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../tc_zufang-master/.idea/tc_zufang-master.iml" filepath="$PROJECT_DIR$/../tc_zufang-master/.idea/tc_zufang-master.iml" />
     </modules>
   </component>
 </project>

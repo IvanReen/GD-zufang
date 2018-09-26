@@ -28,14 +28,14 @@ CONCURRENT_REQUESTS=4
 DOWNLOAD_DELAY = 5
 DOWNLOADER_MIDDLEWARES = {
     'scrapy.contrib.downloadermiddleware.httpproxy.HttpProxyMiddleware': 110,
-    "cw_zufang.proxy_mw.ProxyMiddleware":100,
+    # "cw_zufang.proxy_mw.ProxyMiddleware":100,
     'scrapy.downloadermiddlewares.robotstxt.RobotsTxtMiddleware': 100,
     'scrapy.downloadermiddlewares.defaultheaders.DefaultHeadersMiddleware': 550,
     'scrapy.downloadermiddlewares.ajaxcrawl.AjaxCrawlMiddleware': 560,
     'scrapy.downloadermiddlewares.httpcompression.HttpCompressionMiddleware': 590,
     'scrapy.downloadermiddlewares.chunked.ChunkedTransferMiddleware': 830,
     'scrapy.downloadermiddlewares.stats.DownloaderStats': 850,
-    'cw_zufang.timeout_mw.Timeout_Middleware':610,
+    # 'cw_zufang.timeout_mw.Timeout_Middleware':610,
     'scrapy.downloadermiddlewares.httpauth.HttpAuthMiddleware': None,
     'scrapy.downloadermiddlewares.useragent.UserAgentMiddleware': 300,
     'scrapy.downloadermiddlewares.retry.RetryMiddleware': None,
@@ -44,19 +44,14 @@ DOWNLOADER_MIDDLEWARES = {
     'scrapy.downloadermiddlewares.cookies.CookiesMiddleware': None,
     'scrapy.downloadermiddlewares.httpcache.HttpCacheMiddleware': None,
     'cw_zufang.userAgent_mw.RotateUserAgentMiddleware':400,
-    'cw_zufang.redirect_mw.Redirect_Middleware':500,
-
+    # 'cw_zufang.redirect_mw.Redirect_Middleware':500
 }
 #使用scrapy-redis组件，分布式运行多个爬虫
-
-
-#配置日志存储目录
 SCHEDULER = "scrapy_redis.scheduler.Scheduler"
 DUPEFILTER_CLASS = "scrapy_redis.dupefilter.RFPDupeFilter"
 SCHEDULER_PERSIST = True
 SCHEDULER_QUEUE_CLASS = 'scrapy_redis.queue.SpiderPriorityQueue'
 REDIS_URL = None
-REDIS_HOST = '127.0.0.1' # 也可以根据情况改成 localhost
+REDIS_HOST = '127.0.0.1' # 也可以根据情况改成云端ip
 REDIS_PORT = '6379'
-#LOG_FILE = "logs/scrapy.log"
 

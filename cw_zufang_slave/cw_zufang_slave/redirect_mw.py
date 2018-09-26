@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
+import urllib
 
-from cw_zufang.utils.message import sendMessage_warning
+from cw_zufang_slave.utils.message import sendMessage_warning
 from scrapy.exceptions import IgnoreRequest
 
 
