@@ -17,8 +17,11 @@ class CwzufangSpider(RedisSpider):
         response_url = re.findall('^http\:\/\/\w+\.58\.com', response.url)
         response_selector = Selector(response)
 
-        raw_title = list_first_item(response_selector.xpath('//div[contains(@class,"house-title")]/h1[contains(@class,"c_333 f20")]/text()').extract())
-        if raw_title:
+        if raw_title := list_first_item(
+            response_selector.xpath(
+                '//div[contains(@class,"house-title")]/h1[contains(@class,"c_333 f20")]/text()'
+            ).extract()
+        ):
             cwzufangItem['title'] = raw_title.encode('utf8')
 
         raw_time = list_first_item(response_selector.xpath('//div[contains(@class,"house-title")]/p[contains(@class,"house-update-info c_888 f12")]/text()').extract())
@@ -45,16 +48,16 @@ class CwzufangSpider(RedisSpider):
             area2 = response_selector.xpath('//ul[contains(@class,"f14")]/li/span/a[contains(@class,"c_333")]/text()').extract()[2]
         except:
             area2 = ''
-        raw_area = area + '-' + area2
+        raw_area = f'{area}-{area2}'
         if raw_area:
             raw_area = raw_area.encode('utf8')
-        cwzufangItem['area'] = raw_area if raw_area else None
+        cwzufangItem['area'] = raw_area or None
 
         try:
             raw_community = response_selector.xpath('//ul[contains(@class,"f14")]/li/span/a[contains(@class,"c_333")]/text()').extract()[0]
             if raw_community:
                 raw_community = raw_community.encode('utf8')
-            cwzufangItem['community'] = raw_community if raw_community else None
+            cwzufangItem['community'] = raw_community or None
         except:
             cwzufangItem['community'] = 0
 

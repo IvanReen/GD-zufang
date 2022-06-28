@@ -19,7 +19,7 @@ class ProxyMiddleware():
             ips = GetIps()
         try:
             num = random.randint(0, len(ips))
-            ress = 'http://' + ips[num]
+            ress = f'http://{ips[num]}'
         except:
             pass
         else:

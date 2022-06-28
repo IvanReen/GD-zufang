@@ -34,17 +34,17 @@ class CwZufangSlavePipeline(object):
 
     def process_item(self, item, spider):
         if item['pub_time'] == 0:
-            raise DropItem("Duplicate item found: %s" % item)
+            raise DropItem(f"Duplicate item found: {item}")
         if item['method'] == 0:
-            raise DropItem("Duplicate item found: %s" % item)
+            raise DropItem(f"Duplicate item found: {item}")
         if item['community']==0:
-            raise DropItem("Duplicate item found: %s" % item)
+            raise DropItem(f"Duplicate item found: {item}")
         if item['money']==0:
-            raise DropItem("Duplicate item found: %s" % item)
+            raise DropItem(f"Duplicate item found: {item}")
         if item['area'] == 0:
-            raise DropItem("Duplicate item found: %s" % item)
+            raise DropItem(f"Duplicate item found: {item}")
         if item['city'] == 0:
-            raise DropItem("Duplicate item found: %s" % item)
+            raise DropItem(f"Duplicate item found: {item}")
         # if item['phone'] == 0:
         #     raise DropItem("Duplicate item found: %s" % item)
         # if item['img1'] == 0:
