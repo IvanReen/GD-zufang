@@ -37,6 +37,5 @@ class RotaeUserAgentMiddleware(UserAgentMiddleware):
         return random.choice(self.user_agent_list)
 
     def process_request(self, request, spider):
-        ua = self._user_agent(spider)
-        if ua:
+        if ua := self._user_agent(spider):
             request.headers.setdefault('User-Agent', ua)

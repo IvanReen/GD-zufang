@@ -53,14 +53,18 @@ class CwzufnagSpider(RedisSpider):
         response_selector = Selector(response)
         next_link = list_first_item(response_selector.xpath('//div[contains(@class,"pager")]/a[contains(@class,"next")]/@href').extract())
         detail_link = response_selector.xpath('//div[contains(@class,"listBox")]/ul[contains(@class,"listUl")]/li/@logr').extract()
-        if next_link:
-            if detail_link:
-                inserintotc(next_link, 1)
-                print('#########[success] the next link ' + next_link + ' is insert into the redis queue#########')
+        if next_link and detail_link:
+            inserintotc(next_link, 1)
+            print(
+                f'#########[success] the next link {next_link} is insert into the redis queue#########'
+            )
+
         for detail_link in response_selector.xpath('//div[contains(@class,"listBox")]/ul[contains(@class,"listUl")]/li/@logr').extract():
             print(detail_link.split('_')[3])
             detail_link = 'https://dg.58.com/zufang/' + detail_link.split('_')[3] + 'x.shtml'
             print(detail_link)
             if detail_link:
                 inserintota(detail_link, 2)
-                print('[success] the detail link ' + detail_link + ' is insert into the redis queue')
+                print(
+                    f'[success] the detail link {detail_link} is insert into the redis queue'
+                )
